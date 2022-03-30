@@ -1,7 +1,7 @@
 // global constants
-const clueHoldTime = 1000; //how long to hold each clue's light/sound
-const cluePauseTime = 333; //how long to pause in between clues
-const nextClueWaitTime = 1000; //how long to wait before starting playback of the clue sequence
+const clueHoldTime = 500; //how long to hold each clue's light/sound
+const cluePauseTime = 250; //how long to pause in between clues
+const nextClueWaitTime = 500; //how long to wait before starting playback of the clue sequence
 
 //Global Variables
 var pattern = [2, 2, 4, 3, 2, 1, 2, 4];
@@ -10,6 +10,7 @@ var gamePlaying = false;
 var tonePlaying = false;
 var volume = 0.5;  //must be between 0.0 and 1.0
 var guessCounter = 0;
+var patternPlaying = false;
 
 function startGame(){
     //initialize game variables
@@ -46,6 +47,9 @@ function playTone(btn,len){
   },len)
 }
 function startTone(btn){
+  if(patternPlaying) {
+    return;
+  }
   if(!tonePlaying){
     context.resume()
     o.frequency.value = freqMap[btn]
@@ -85,7 +89,13 @@ function playSingleClue(btn){
   }
 }
 
+function patternPlayingOff(){
+  patternPlaying = false;
+  console.log("pattern playing off");
+}
+
 function playClueSequence(){
+  console.log("pattern playing on");
   patternPlaying = true;
   guessCounter = 0;
   context.resume()
@@ -96,7 +106,7 @@ function playClueSequence(){
     delay += clueHoldTime 
     delay += cluePauseTime;
   }
-  patternPlaying = false;
+  setTimeout(patternPlayingOff, delay);
 }
 
 function loseGame(){
@@ -110,6 +120,9 @@ function winGame(){
 }
 
 function guess(btn){
+  if(patternPlaying) {
+    return;
+  }
   console.log("user guessed: " + btn);
   if(!gamePlaying){
     return;
