@@ -2,30 +2,30 @@
 
 **Memory Game** is a Light & Sound Memory game to apply for CodePath's SITE Program. 
 
-Submitted by: **NAME**
+Submitted by: Wei Hang Hong
 
-Time spent: **#** hours spent in total
+Time spent: ~2 hours spent in total
 
-Link to project: (insert your link here, should start with https://glitch.com...)
+Link to project: https://glitch.com/edit/#!/wakeful-sunrise-bosworth?path=script.js%3A125%3A3
 
 ## Required Functionality
 
 The following **required** functionality is complete:
 
-* [ ] Game interface has a heading (h1 tag), a line of body text (p tag), and four buttons that match the demo app
-* [ ] "Start" button toggles between "Start" and "Stop" when clicked. 
-* [ ] Game buttons each light up and play a sound when clicked. 
-* [ ] Computer plays back sequence of clues including sound and visual cue for each button
-* [ ] Play progresses to the next turn (the user gets the next step in the pattern) after a correct guess. 
-* [ ] User wins the game after guessing a complete pattern
-* [ ] User loses the game after an incorrect guess
+* [x] Game interface has a heading (h1 tag), a line of body text (p tag), and four buttons that match the demo app
+* [x] "Start" button toggles between "Start" and "Stop" when clicked. 
+* [x] Game buttons each light up and play a sound when clicked. 
+* [x] Computer plays back sequence of clues including sound and visual cue for each button
+* [x] Play progresses to the next turn (the user gets the next step in the pattern) after a correct guess. 
+* [x] User wins the game after guessing a complete pattern
+* [x] User loses the game after an incorrect guess
 
 The following **optional** features are implemented:
 
-* [ ] Any HTML page elements (including game buttons) has been styled differently than in the tutorial
+* [x] Any HTML page elements (including game buttons) has been styled differently than in the tutorial
 * [ ] Buttons use a pitch (frequency) other than the ones in the tutorial
 * [ ] More than 4 functional game buttons
-* [ ] Playback speeds up on each turn
+* [x] Playback speeds up on each turn
 * [ ] Computer picks a different pattern each time the game is played
 * [ ] Player only loses after 3 mistakes (instead of on the first mistake)
 * [ ] Game button appearance change goes beyond color (e.g. add an image)
@@ -34,7 +34,8 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-- [ ] List anything else that you can get done to improve the app!
+- [x] List anything else that you can get done to improve the app!
+- [x] Disabled the player from clicking the boxes while the pattern is still playing (the player can't cheat by clicking the box immediately after the box lights up)
 
 ## Video Walkthrough (GIF)
 
@@ -46,10 +47,10 @@ If you recorded multiple GIFs for all the implemented features, you can add them
 
 ## Reflection Questions
 1. If you used any outside resources to help complete your submission (websites, books, people, etc) list them here. 
-[YOUR ANSWER HERE]
+N/a
 
 2. What was a challenge you encountered in creating this submission (be specific)? How did you overcome it? (recommended 200 - 400 words) 
-[YOUR ANSWER HERE]
+A challenge that I encountered in creating this submission is adding an anti-cheat function to the game. In the base game, players can click on the boxes while the pattern is playing. This makes the game too easy and no fun. There is no memorization required by just clicking the same box when it lights up. To make up for this fault, I decided to implement a function that disables the player input while the pattern is still playing. At first, I was bewildered because I am not used to dealing with real-time functions. I had the idea of adding a new global variable to keep track of when the pattern is being played. My idea was to set that variable to false when the game starts and set it to true whenever the pattern is playing and then back to false when the pattern stops playing. First, I tried to set that variable to true at the beginning of playClueSequence() and then set it to false at the end of playClueSequence(). However, I quickly realized that it does not work. I did not understand why it does not work so I decided to log the function on the console to see when the variable changed. After studying the logs and the code, I realized that the code does not pause when it reaches the timers. The only plausible solution for me was to use the setTimeout function, even though I am not sure what it does. By studying the implementations of other setTimeout functions, I can guess that the first argument is what the function will do and the second argument is how long it should wait to do that function. Knowing that, I made a function to set the variable to false. The third argument is most likely the arguments that our first argument takes in. I did not need it so I left it blank. Figuring out the delay was easy because it was already done for me. After I finished, I tested my code and it does work as I intended.
 
 3. What questions about web development do you have after completing your submission? (recommended 100 - 300 words) 
 [YOUR ANSWER HERE]
@@ -66,7 +67,7 @@ If you recorded multiple GIFs for all the implemented features, you can add them
 
 ## License
 
-    Copyright [YOUR NAME]
+    Copyright Wei Hang Hong
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
